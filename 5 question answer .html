@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+          
+         async function getCurrency(){
+            var response = await fetch('https://restcountries.com/v3.1/all')
+            var data=await response.json()
+            console.log(data);
+            data.filter(elment=>{
+                for (let item in element.currencies){
+                    if (element.currencies[item].name==="United States Dollar"){
+                        return true
+                    }
+                }
+            }).map(element=>console.log(element.name.common))
+          }
+          getCurrency()
+          
+    
+    
+    </script>
+</body>
+</html>
