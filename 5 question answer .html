@@ -9,16 +9,19 @@
     <script>
           
          async function getCurrency(){
-            var response = await fetch('https://restcountries.com/v3.1/all')
+            var response = await fetch('https://restcountries.com/v2/all')
             var data=await response.json()
             console.log(data);
-            data.filter(elment=>{
-                for (let item in element.currencies){
-                    if (element.currencies[item].name==="United States dollar"){
-                        return true
-                    }
-                }
-            }).map(element=>console.log(element.name.common))
+            data.filter(element=>{
+        // console.log(element.currencies)
+        // object 
+        for (let key in element.currencies){
+            // console.log(key)
+            if(element.currencies[key].code==="USD"){
+                console.log(element.name)
+            }
+        }
+    })
           }
           getCurrency()
           
